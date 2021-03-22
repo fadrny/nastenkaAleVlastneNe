@@ -1,15 +1,46 @@
-import { FC } from 'react'
-import styled from 'styled-components'
-import { spacings } from './theme'
+import * as React from 'react';
+import styled, { css } from 'styled-components';
 
-const Wrapper = styled.div`
-  height: 50px;
-  width: 100%;
-  background-color: black;
+
+import {MenuElement} from './atomic/menu-element'
+
+
+const StyledMenu = styled.div`
+    width:100%;
+    background-color: #81BD60;
+    display: inline-flex;
+    justify-content: space-between;
+    height: 4em;
+    align-items: center;
+    div{
+        display: inline-flex;
+    }
+`;
+
+const Logo = styled.h3`
+  font-size: 1.5em;
+  font-family: Roboto, sans-serif;
+  margin: 0 0 0 1.3em;
   color: white;
-  padding: ${spacings.s};
-`
 
-export const Menu: FC = () => {
-  return <Wrapper>Menu</Wrapper>
+  font-weight: 600;
+  justify-content: flex-start;
+`;
+
+export function Menu(){
+
+
+    return(
+        <div>
+            <StyledMenu>
+                <Logo>GALERIE - NÁSTĚNKA</Logo>
+                <div>
+                    <MenuElement DisplayText="jo" AnchorTarget="#" />
+                    <MenuElement DisplayText="jo" AnchorTarget="#" />
+                    <MenuElement DisplayText="jo" AnchorTarget="#" />
+                    <MenuElement DisplayText="no ale proč?" AnchorTarget="#" Important/>
+                </div>
+            </StyledMenu>
+        </div>
+    )
 }

@@ -8,10 +8,27 @@ const userProfile = {
   status: 'cached',
 }
 
+const fldrs = [
+  {
+    id: "4564sss",
+    name: "tvojeMatka",
+    webViewLink: "https://tvojmeatyka.c"
+  },
+  {
+    id: "5564sss",
+    name: "tvojeMatka",
+    webViewLink: "https://tvojmeatyka.c"
+  }
+]
+
 const Query: Required<QueryResolvers<ResolverContext>> = {
   viewer(_parent, _args, _context, _info) {
     return userProfile
   },
+
+  folders(_parent, _args, _context, _info) {
+    return fldrs;
+  }
 }
 
 const Mutation: Required<MutationResolvers<ResolverContext>> = {
