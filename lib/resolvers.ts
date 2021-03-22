@@ -27,6 +27,7 @@ const Query: Required<QueryResolvers<ResolverContext>> = {
   },
 
   folders(_parent, _args, _context, _info) {
+    console.log();
     return fldrs;
   }
 }
