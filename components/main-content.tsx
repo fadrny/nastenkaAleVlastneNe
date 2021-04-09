@@ -12,7 +12,6 @@ const FldrArr = styled.div`
     margin-top: 1.5em;
 
 `;
-
 const Btn = styled.button`
     background: none;
 	color: inherit;
@@ -21,8 +20,6 @@ const Btn = styled.button`
 	cursor: pointer;
 	outline: inherit;
 `;
-
-
 type FetchedFolders = {
     id: string,
     name: string,
@@ -32,7 +29,7 @@ type FetchedFolders = {
 export function FolderArray(){
     const [currentFolder, setCurrentFolder] = React.useState("");
     const [folders, setFolders] = React.useState();
-    const { data, loading, error } = useFoldersQuery();
+    const { data, loading, error } = useFoldersQuery({variables:{id:'hishfi'}});
 
     React.useEffect(() => {
         if(loading){
@@ -52,7 +49,7 @@ export function FolderArray(){
             useFolders(data?.folders as Array<FetchedFolders>)
         }
         else{
-
+            useFolders(data?.folders as Array<FetchedFolders>)
         }
     }
 

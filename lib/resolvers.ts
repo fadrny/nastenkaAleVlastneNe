@@ -2,42 +2,18 @@ import { QueryResolvers, MutationResolvers } from './type-defs.graphqls'
 import { ResolverContext } from './apollo'
 import console from 'console'
 
-const userProfile = {
-  id: String(1),
-  name: 'John Smith',
-  status: 'cached',
-}
-
-const fldrs = [
-  {
-    id: "4564sss",
-    name: "tvojeMatka",
-    webViewLink: "https://tvojmeatyka.c"
-  },
-  {
-    id: "5564sss",
-    name: "tvojeMatka",
-    webViewLink: "https://tvojmeatyka.c"
-  }
-]
+const driveApi = require('./googleApi')
 
 const Query: Required<QueryResolvers<ResolverContext>> = {
-  viewer(_parent, _args, _context, _info) {
-    return userProfile
-  },
-
   folders(_parent, _args, _context, _info) {
-    console.log();
-    return fldrs;
+    const qry =  '14evpVE-WZzGB9rEPYyVs1s7C9pmYJYNs';
+    return driveApi.ListFiles({
+        fields: 'nextPageToken, files(name, webViewLink, id)',
+        q: "'" + qry + "' in parents and mimeType = 'application/vnd.google-apps.folder'"
+    }).then((output: { files: any }) => {
+        return output.files
+    });
   }
 }
 
-const Mutation: Required<MutationResolvers<ResolverContext>> = {
-  updateName(_parent, _args, _context, _info) {
-    console.log(`setting a new name to ${_args.name}`)
-    userProfile.name = _args.name
-    return userProfile
-  },
-}
-
-export default { Query, Mutation }
+export default { Query }

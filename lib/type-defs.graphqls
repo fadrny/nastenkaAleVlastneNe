@@ -1,8 +1,4 @@
 type Query {
-  viewer: User!
   folders: [Folder!]!
 }
 
-type Mutation {
-  updateName(name: String!): User!
-}
