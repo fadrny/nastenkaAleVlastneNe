@@ -1,6 +1,6 @@
 import React from 'react'
 import {Menu} from './../components/menu'
-import {FolderArray} from './../components/main-content'
+import {FolderArray} from '../components/folders'
 
 const Index = () => {
 

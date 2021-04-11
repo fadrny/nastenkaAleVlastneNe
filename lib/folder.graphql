@@ -1,5 +1,5 @@
-query Folders{
-    folders{
+query Folders($id: String!){
+    folders(id: $id) {
         id
         name
         webViewLink
