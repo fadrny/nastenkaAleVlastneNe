@@ -33,12 +33,11 @@ export function Menu(){
     return(
         <div>
             <StyledMenu>
-                <Logo>GALERIE - NÁSTĚNKA</Logo>
+                <Logo>NÁSTĚNKA</Logo>
                 <div>
-                    <MenuElement DisplayText="jo" AnchorTarget="#" />
-                    <MenuElement DisplayText="jo" AnchorTarget="#" />
-                    <MenuElement DisplayText="jo" AnchorTarget="#" />
-                    <MenuElement DisplayText="no ale proč?" AnchorTarget="#" Important/>
+                    <MenuElement DisplayText="domů" AnchorTarget="/" />
+                    <MenuElement DisplayText="galerie" AnchorTarget="/gallery" />
+                    <MenuElement DisplayText="odhlásit se" AnchorTarget="#" Important/>
                 </div>
             </StyledMenu>
         </div>
