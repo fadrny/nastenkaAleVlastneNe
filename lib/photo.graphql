@@ -1,0 +1,7 @@
+query Photos($folder: String!){
+    photos(folder: $folder) {
+        id
+        photoLink
+        fullPhotoLink
+    }
+}   

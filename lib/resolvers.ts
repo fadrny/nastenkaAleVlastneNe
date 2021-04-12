@@ -16,6 +16,18 @@ const Query: Required<QueryResolvers<ResolverContext>> = {
     }).then((output: { files: any }) => {
         return output.files;    
     });
+  },
+
+  photos(_parent, _args, _context, _info){
+    if(_args.folder){
+      const qry = _args.folder;
+      return driveApi.ListFiles({
+          fields: 'nextPageToken, files(name, webViewLink, id)',
+          q: "'" + qry + "' in parents and mimeType = 'application/vnd.google-apps.folder'"
+      }).then((output: { files: any }) => {
+          return output.files;    
+      });
+    }
   }
 
 }

@@ -1,4 +1,6 @@
 type Query{
   folders(id: String!): [Folder!]!
+  
+  photos(folder: String!): [Photo!]!
 }
 
