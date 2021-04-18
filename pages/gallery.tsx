@@ -1,7 +1,6 @@
-import Link from 'next/link'
 import React from 'react'
-import {Menu} from './../components/menu'
-import {FolderArray} from '../components/folders'
+import {Menu} from '../components/menu'
+import {FolderArray} from '../components/mainFolders'
 import { useUser } from '@auth0/nextjs-auth0';
 
 export default function Gallery() {
@@ -20,9 +19,5 @@ export default function Gallery() {
         )
     }
 
-    return <a href="/api/auth/login">Login</a>;
-
-
-
-    
+    return <a href="/api/auth/login">Login</a>;    
 }

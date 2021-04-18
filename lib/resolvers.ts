@@ -23,9 +23,9 @@ const Query: Required<QueryResolvers<ResolverContext>> = {
       const qry = _args.folder;
       return driveApi.ListFiles({
           fields: 'nextPageToken, files(name, webViewLink, id)',
-          q: "'" + qry + "' in parents and mimeType = 'application/vnd.google-apps.folder'"
+          q: "'" + qry + "' in parents and mimeType = 'application/vnd.google-apps.photo'"
       }).then((output: { files: any }) => {
-          return output.files;    
+          return output.files;
       });
     }
   }

@@ -30,7 +30,6 @@ type FetchedFolders = {
 
 export function FolderArray(){
     const [currentFolder, setCurrentFolder] = React.useState("");
-    const [lastFolder, setLastFolder] = React.useState("");
     const [folders, setFolders] = React.useState();
     const { data, loading, error } = useFoldersQuery({variables:{id:currentFolder}});
 
@@ -46,9 +45,8 @@ export function FolderArray(){
             console.log(data);
             const a = (data?.folders.map((x) => {
                 return <Btn 
-                        onClick={()=>{
-                            setCurrentFolder(x.id)}}>
-                        <Slozka DisplayText={x.name} key={x.id} FolderID={x.id}/>
+                        onClick={()=>{location.assign("gallery/" + x.id)}}>
+                            <Slozka DisplayText={x.name} key={x.id} FolderID={x.id}/>
                         </Btn>
             }));
             setFolders(a);
@@ -58,7 +56,6 @@ export function FolderArray(){
 
     return(
         <Fragment>
-            {lastFolder}
             <FldrArr>
                 {folders}
             </FldrArr>
