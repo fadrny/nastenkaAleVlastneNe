@@ -15,7 +15,7 @@ export default function Gallery() {
         return (
             <div>
                 <Menu/>
-                <FolderArray/>
+                <FolderArray idnt=""/>
             </div>
         )
     }

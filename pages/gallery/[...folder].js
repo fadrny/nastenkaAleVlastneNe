@@ -3,6 +3,8 @@ import Link from 'next/link'
 import {Menu} from '../../components/menu'
 import {LoginScreen} from '../../components/login-screen'
 import { useUser } from '@auth0/nextjs-auth0'
+import {FolderArray} from '../../components/mainFolders'
+import { fromPromise } from '@apollo/client'
 
 
 const Gallery = () => {
@@ -19,11 +21,12 @@ const Gallery = () => {
     return (
       <>
         <Menu/>
-        <h1>Folder: {folder.join('/')}</h1>
+        {/* <h1>Folder: {folder.join('/')}</h1>
         <Link href={
           folder.join('/') + "/" + "aha"}>
           <a>protahni</a>
-        </Link>
+        </Link> */}
+        <FolderArray idnt={folder[folder.length - 1]}/>
       </>
     )
   }

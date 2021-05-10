@@ -1,5 +1,5 @@
-import { emitKeypressEvents } from 'node:readline';
 import React, { Fragment, useState } from 'react'
+import { Router, useRouter } from 'next/router'
 import styled from 'styled-components';
 import { useFoldersQuery } from '../lib/folder.graphql';
 
@@ -20,18 +20,20 @@ const Btn = styled.button`
 	padding: 0;
 	cursor: pointer;
 	outline: inherit;
-`;
-type FetchedFolders = {
-    id: string,
-    name: string,
-    webViewLink?: string,
-    prevState: null
+`; 
+type folder = {
+    idnt: string
 }
 
-export function FolderArray(){
-    const [currentFolder, setCurrentFolder] = React.useState("");
+export function FolderArray(prop : folder){
+    const [currentFolder, setCurrentFolder] = React.useState(prop.idnt);
     const [folders, setFolders] = React.useState();
     const { data, loading, error } = useFoldersQuery({variables:{id:currentFolder}});
+
+    const router = useRouter()
+
+    const fldr = router.query.folder || []
+
 
     React.useEffect(() => {
         if(loading){
@@ -45,7 +47,7 @@ export function FolderArray(){
             console.log(data);
             const a = (data?.folders.map((x) => {
                 return <Btn 
-                        onClick={()=>{location.assign("gallery/" + x.id)}}>
+                        onClick={()=>{location.assign("gallery" + fldr.join('/') + "/" + x.id)}}>
                             <Slozka DisplayText={x.name} key={x.id} FolderID={x.id}/>
                         </Btn>
             }));
