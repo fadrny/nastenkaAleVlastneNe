@@ -1,4 +1,13 @@
 module.exports = {
+  async redirects() {
+    return [
+      {
+        source: '/logout',
+        destination: '/api/auth/logout',
+        permanent: true,
+      },
+    ]
+  },
   webpack(config, options) {
     config.module.rules.push({
       test: /\.graphql$/,

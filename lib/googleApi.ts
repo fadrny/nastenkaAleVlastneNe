@@ -6,7 +6,7 @@ const scopes = [
 ];
 
 const auth = new google.auth.JWT(
-  credentials.client_email, null,
+  credentials.client_email, undefined,
   credentials.private_key, scopes
 );
 
@@ -19,7 +19,7 @@ const params = {
     q: "'14evpVE-WZzGB9rEPYyVs1s7C9pmYJYNs' in parents"
   };
 */
-function ListFiles(params) {
+function ListFiles(params : any) {
   return drive.files.list(params)
     .then((res: { data: { files: string | any[]; }; }) => {
       if (res.data.files.length) {

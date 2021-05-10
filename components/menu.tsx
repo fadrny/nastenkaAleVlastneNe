@@ -37,7 +37,7 @@ export function Menu(){
                 <div>
                     <MenuElement DisplayText="domů" AnchorTarget="/" />
                     <MenuElement DisplayText="galerie" AnchorTarget="/gallery" />
-                    <MenuElement DisplayText="odhlásit se" AnchorTarget="api/auth/logout" Important/>
+                    <MenuElement DisplayText="odhlásit se" AnchorTarget="/logout" Important/>
                 </div>
             </StyledMenu>
         </div>

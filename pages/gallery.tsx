@@ -2,6 +2,7 @@ import React from 'react'
 import {Menu} from '../components/menu'
 import {FolderArray} from '../components/mainFolders'
 import { useUser } from '@auth0/nextjs-auth0';
+import {LoginScreen} from '../components/login-screen'
 
 export default function Gallery() {
 
@@ -19,5 +20,5 @@ export default function Gallery() {
         )
     }
 
-    return <a href="/api/auth/login">Login</a>;    
+    return <LoginScreen/>   
 }
