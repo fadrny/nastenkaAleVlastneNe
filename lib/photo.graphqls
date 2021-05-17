@@ -1,5 +1,5 @@
 type Photo{
     id: String!
-    photoLink: String!
-    fullPhotoLink: String!
+    name: String!
+    webViewLink: String!
 }

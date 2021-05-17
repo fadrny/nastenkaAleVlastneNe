@@ -1,10 +1,8 @@
 import React, { Fragment, useState } from 'react'
 import { Router, useRouter } from 'next/router'
-import {LoaderElement} from './atomic/loading-element';
 import styled from 'styled-components';
-import { useFoldersQuery } from '../lib/folder.graphql';
-
-import {Slozka} from './atomic/slozka';
+import {LoaderElement} from './atomic/loading-element';
+import { usePhotosQuery } from '../__generated__/lib/photo.graphql';
 
 const FldrArr = styled.div`
 
@@ -26,33 +24,26 @@ type folder = {
     idnt: string
 }
 
-export function FolderArray(prop : folder){
+export function PhotoGrid(prop : folder){
     const [currentFolder, setCurrentFolder] = React.useState(prop.idnt);
     const [folders, setFolders] = React.useState(<LoaderElement/>);
-    const { data, loading, error } = useFoldersQuery({variables:{id:currentFolder}});
+    const { data, loading, error } = usePhotosQuery({variables:{folder:currentFolder}});
 
     const router = useRouter()
 
-    const fldr = router.query.folder || []
-
+    const fldr = router.query.folder || [];
 
     React.useEffect(() => {
         if(loading){
             console.log(data);
         }
         else if(error){
+            setFolders(<h1>error</h1>);
             console.log(error);
         }
         else {
+            setFolders(<h1>nacteno</h1>);
             console.log(data);
-            const a = (data?.folders.map((x) => {
-                return <Btn 
-                        onClick={()=>{location.assign("gallery" + fldr.join('/') + "/" + x.id)}}>
-                            <Slozka DisplayText={x.name} key={x.id} FolderID={x.id}/>
-                        </Btn>
-            }));
-            setFolders(a);
-
         }
     }, [data, currentFolder])
 
@@ -64,4 +55,3 @@ export function FolderArray(prop : folder){
         </Fragment>
     );
 }
-  

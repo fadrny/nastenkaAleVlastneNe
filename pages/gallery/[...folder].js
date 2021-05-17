@@ -1,10 +1,9 @@
 import { Router, useRouter } from 'next/router'
-import Link from 'next/link'
 import {Menu} from '../../components/menu'
 import {LoginScreen} from '../../components/login-screen'
 import { useUser } from '@auth0/nextjs-auth0'
 import {FolderArray} from '../../components/mainFolders'
-import { fromPromise } from '@apollo/client'
+import {PhotoGrid} from '../../components/photo-grid'
 
 
 const Gallery = () => {
@@ -27,6 +26,8 @@ const Gallery = () => {
           <a>protahni</a>
         </Link> */}
         <FolderArray idnt={folder[folder.length - 1]}/>
+        <br/>
+        <PhotoGrid idnt={folder[folder.length - 1]}/>
       </>
     )
   }

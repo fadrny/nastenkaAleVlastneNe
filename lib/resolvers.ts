@@ -20,12 +20,12 @@ const Query: Required<QueryResolvers<ResolverContext>> = {
 
   photos(_parent, _args, _context, _info){
     if(_args.folder){
-      const qry = _args.folder;
+      const qry = _args.folder || '14evpVE-WZzGB9rEPYyVs1s7C9pmYJYNs';
       return driveApi.ListFiles({
           fields: 'nextPageToken, files(name, webViewLink, id)',
-          q: "'" + qry + "' in parents and mimeType = 'application/vnd.google-apps.photo'"
-      }).then((output: { files: any }) => {
-          return output.files;
+          q: "'" + qry + "' in parents and mimeType contains 'image/'"
+      }).then((output: { files: any; }) => {
+          return output.files
       });
     }
   }

@@ -8,10 +8,10 @@ export default function Gallery() {
 
     const { user, error, isLoading } = useUser();
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>{error.message}</div>;
+    else if (error) return <div>{error.message}</div>;
 
 
-    if (user) {
+    else if (user) {
         return (
             <div>
                 <Menu/>
