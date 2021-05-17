@@ -58,7 +58,7 @@ const Index = () => {
             <div>
                 <Menu/>
                 <Container className="flex-container">
-                    <a href="#"><IndexElement id="calendar"><P>Kalendář</P></IndexElement></a>
+                    <a href="/calendar"><IndexElement id="calendar"><P>Kalendář</P></IndexElement></a>
                     <a href="/gallery"><IndexElement id="galerie"><P>Galerie</P></IndexElement></a>
                 </Container>
             </div>

@@ -22,10 +22,11 @@ const Query: Required<QueryResolvers<ResolverContext>> = {
     if(_args.folder){
       const qry = _args.folder || '14evpVE-WZzGB9rEPYyVs1s7C9pmYJYNs';
       return driveApi.ListFiles({
+          pageSize: 1000,
           fields: 'nextPageToken, files(name, webViewLink, id)',
-          q: "'" + qry + "' in parents and mimeType contains 'image/'"
+          q: "'" + qry + "' in parents and mimeType contains 'image/' and visibility = 'anyoneWithLink'"
       }).then((output: { files: any; }) => {
-          return output.files
+          return output.files;
       });
     }
   }

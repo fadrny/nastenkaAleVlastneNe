@@ -1,57 +1,55 @@
-import React, { Fragment, useState } from 'react'
-import { Router, useRouter } from 'next/router'
+import React, { Fragment, useState } from 'react';
+import { Router, useRouter } from 'next/router';
 import styled from 'styled-components';
 import {LoaderElement} from './atomic/loading-element';
 import { usePhotosQuery } from '../__generated__/lib/photo.graphql';
+import {photoType} from './atomic/photo-type';
+import {SinglePhoto} from './atomic/photo'
 
-const FldrArr = styled.div`
-
-    display: inline-flex;
+const ImgArr = styled.ul`
+    display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 1.5em;
+    list-style-type: none;
+    padding: 0 3rem;
 
+    @media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+        flex-direction: row;
+    }
 `;
-const Btn = styled.button`
-    background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	cursor: pointer;
-	outline: inherit;
-`; 
+
+const LastChild = styled.li`
+    flex-grow: 10;
+`;
+
 type folder = {
     idnt: string
 }
 
 export function PhotoGrid(prop : folder){
     const [currentFolder, setCurrentFolder] = React.useState(prop.idnt);
-    const [folders, setFolders] = React.useState(<LoaderElement/>);
+    const [photos, setPhotos] = React.useState(<LoaderElement/>);
     const { data, loading, error } = usePhotosQuery({variables:{folder:currentFolder}});
 
-    const router = useRouter()
 
-    const fldr = router.query.folder || [];
+    //const fldr = router.query.folder || [];
 
     React.useEffect(() => {
-        if(loading){
-            console.log(data);
-        }
+        if(loading){}
         else if(error){
-            setFolders(<h1>error</h1>);
+            setPhotos(<h1>error</h1>);
             console.log(error);
         }
         else {
-            setFolders(<h1>nacteno</h1>);
-            console.log(data);
+            const a = (data?.photos.map((x:photoType) => {
+                return <SinglePhoto {...x}/>
+            }));
+            setPhotos(<ImgArr>{a}<LastChild/></ImgArr>);
         }
     }, [data, currentFolder])
 
     return(
         <Fragment>
-            <FldrArr>
-                {folders}
-            </FldrArr>
+                {photos}
         </Fragment>
     );
 }

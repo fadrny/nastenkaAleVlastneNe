@@ -51,16 +51,14 @@ export function FolderArray(prop : folder){
                             <Slozka DisplayText={x.name} key={x.id} FolderID={x.id}/>
                         </Btn>
             }));
-            setFolders(a);
+            setFolders(<FldrArr>{a}</FldrArr>);
 
         }
     }, [data, currentFolder])
 
     return(
         <Fragment>
-            <FldrArr>
                 {folders}
-            </FldrArr>
         </Fragment>
     );
 }

@@ -6,10 +6,12 @@ const WrapLoad = styled.div`
     width: 100vw;
     display:flex;
     justify-content: center;
+    margin: 1.2rem 0;
 `;
 
 export const LoaderElement = () => {
-        return (<WrapLoad>
+        return (
+                <WrapLoad>
                     <Loader
                     type="Grid"
                     color="#81BD60"
