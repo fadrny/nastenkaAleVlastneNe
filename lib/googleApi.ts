@@ -19,7 +19,7 @@ const params = {
     q: "'14evpVE-WZzGB9rEPYyVs1s7C9pmYJYNs' in parents"
   };
 */
-function ListFiles(params : any) {
+function ListFiles(params: any) {
   return drive.files.list(params)
     .then((res: { data: { files: string | any[]; }; }) => {
       if (res.data.files.length) {

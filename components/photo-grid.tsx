@@ -1,5 +1,4 @@
-import React, { Fragment, useState } from 'react';
-import { Router, useRouter } from 'next/router';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import {LoaderElement} from './atomic/loading-element';
 import { usePhotosQuery } from '../__generated__/lib/photo.graphql';
@@ -26,7 +25,7 @@ type folder = {
 }
 
 export function PhotoGrid(prop : folder){
-    const [currentFolder, setCurrentFolder] = React.useState(prop.idnt);
+    const [currentFolder] = React.useState(prop.idnt);
     const [photos, setPhotos] = React.useState(<LoaderElement/>);
     const { data, loading, error } = usePhotosQuery({variables:{folder:currentFolder}});
 
@@ -34,8 +33,8 @@ export function PhotoGrid(prop : folder){
     //const fldr = router.query.folder || [];
 
     React.useEffect(() => {
-        if(loading){}
-        else if(error){
+        if(loading){setPhotos(<LoaderElement/>)}
+        if(error){
             setPhotos(<h1>error</h1>);
             console.log(error);
         }

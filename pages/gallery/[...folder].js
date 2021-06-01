@@ -1,13 +1,14 @@
-import { Router, useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import {Menu} from '../../components/menu'
 import {LoginScreen} from '../../components/login-screen'
 import { useUser } from '@auth0/nextjs-auth0'
 import {FolderArray} from '../../components/mainFolders'
 import {PhotoGrid} from '../../components/photo-grid'
 
-
 const Gallery = () => {
   const { user, error, isLoading } = useUser();
+
+
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
@@ -15,10 +16,11 @@ const Gallery = () => {
   const router = useRouter()
 
   if (user) {
-    const folder = router.query.folder || []
+    const folder = router.query.folder || [];
   
     return (
       <>
+      {/* <p>{useAppContext()}</p> */}
         <Menu/>
         {/* <h1>Folder: {folder.join('/')}</h1>
         <Link href={
