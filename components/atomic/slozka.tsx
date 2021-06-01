@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 /*
 import Shape1 from '../../assests/13.svg';
@@ -36,7 +35,7 @@ const Fldr = styled.div`
     }
 `;
 
-export function Slozka(props : FolderType){
+export function Slozka(props: FolderType){
 
     return(
         <Fldr><a href='#'>{props.DisplayText}</a></Fldr>

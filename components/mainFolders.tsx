@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from 'react'
-import { Router, useRouter } from 'next/router'
+import React, { Fragment } from 'react'
+import {  useRouter } from 'next/router'
 import {LoaderElement} from './atomic/loading-element';
 import styled from 'styled-components';
 import { useFoldersQuery } from '../lib/folder.graphql';
@@ -26,8 +26,8 @@ type folder = {
     idnt: string
 }
 
-export function FolderArray(prop : folder){
-    const [currentFolder, setCurrentFolder] = React.useState(prop.idnt);
+export function FolderArray(prop: folder){
+    const [currentFolder] = React.useState(prop.idnt);
     const [folders, setFolders] = React.useState(<LoaderElement/>);
     const { data, loading, error } = useFoldersQuery({variables:{id:currentFolder}});
 
@@ -46,7 +46,7 @@ export function FolderArray(prop : folder){
         else {
             console.log(data);
             const a = (data?.folders.map((x) => {
-                return <Btn 
+                return <Btn key={x}
                         onClick={()=>{location.assign("gallery" + fldr.join('/') + "/" + x.id)}}>
                             <Slozka DisplayText={x.name} key={x.id} FolderID={x.id}/>
                         </Btn>

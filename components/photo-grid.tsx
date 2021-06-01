@@ -24,7 +24,7 @@ type folder = {
     idnt: string
 }
 
-export function PhotoGrid(prop : folder){
+export function PhotoGrid(prop: folder){
     const [currentFolder] = React.useState(prop.idnt);
     const [photos, setPhotos] = React.useState(<LoaderElement/>);
     const { data, loading, error } = usePhotosQuery({variables:{folder:currentFolder}});
@@ -39,8 +39,8 @@ export function PhotoGrid(prop : folder){
             console.log(error);
         }
         else {
-            const a = (data?.photos.map((x:photoType) => {
-                return <SinglePhoto {...x}/>
+            const a = (data?.photos.map((x: photoType) => {
+                return <SinglePhoto key="kliczek" {...x}/>
             }));
             setPhotos(<ImgArr>{a}<LastChild/></ImgArr>);
         }

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import styled, { css } from 'styled-components';
 import { useRouter } from 'next/router'
 
@@ -33,7 +32,7 @@ const Btn = styled.div<Pick<MenuAnchor,"Important">>`
 `;
 
 
-export function MenuElement(props : MenuAnchor){
+export function MenuElement(props: MenuAnchor){
   const router = useRouter()
 
     return(
