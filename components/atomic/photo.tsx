@@ -31,7 +31,7 @@ const Image = styled.img`
   }
 `;
 
-export const SinglePhoto = (prop:photoType) => {
+export const SinglePhoto = (prop: photoType) => {
     return(
         <ImgWrap>
             <a href={prop.webViewLink} target="popup" >
